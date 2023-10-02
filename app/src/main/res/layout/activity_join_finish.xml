@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.join_finish">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:gravity="center"
+       app:layout_constraintTop_toBottomOf="@id/topPanel">
+       
+       <ImageView
+           android:layout_width="236dp"
+           android:layout_height="236dp"
+           android:src="@drawable/join_finish_logo"
+           android:layout_marginBottom="47dp"/>
+
+       <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/go_login_button"
+           android:layout_width="147dp"
+           android:layout_height="51dp"
+           android:background="@drawable/round_shape"
+           android:text="로그인 하러가기"
+           android:textSize="18dp"
+           android:textColor="@color/white"/>
+
+       
+       
+       
+       
+   </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

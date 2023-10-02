@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPage.mypage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="마이페이지"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/profile_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_account_circle_130"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B+"
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            android:background="@drawable/circle_background"
+            android:padding="10dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginLeft="80dp"/>
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="20dp"
+        android:id="@+id/retouch_profile_button"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:text="프로필 수정"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:backgroundTint="#FEE6E2"
+        android:background="@drawable/round_shape"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/profile_panel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/receive_ment_panel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/retouch_profile_button">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/more_review_button"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="#FEE6E2"
+            android:text="받은 리뷰 보기"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            tools:ignore="TextSizeCheck" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d9d9d9"
+        app:layout_constraintTop_toBottomOf="@id/receive_ment_panel"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        android:gravity="center">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공유 캘린더"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:id="@+id/calender"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/certification_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학교 인증"
+            android:textSize="20dp"
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:textSize="20dp"
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원 탈퇴"
+            android:textSize="20dp"
+            android:textColor="@color/black" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

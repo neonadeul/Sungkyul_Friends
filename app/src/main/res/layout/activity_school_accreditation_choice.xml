@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SchoolCheck.school_accreditation_choice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="학교 인증"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증 방식 선택"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="19dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="33dp"
+        android:layout_marginLeft="12dp"/>
+
+    <ImageButton
+        android:id="@+id/certificate_of_enrollment_button"
+        android:layout_width="363dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/certificate_of_enrollment"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/student_id_button"
+        android:layout_width="363dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/student_card"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/certificate_of_enrollment_button"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPage.review_page">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="후기 학점"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/profile_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_account_circle_130"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B+"
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            android:background="@drawable/circle_background"
+            android:padding="10dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginLeft="80dp"/>
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/line1"
+        app:layout_constraintTop_toBottomOf="@id/profile_panel"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d9d9d9"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/top_text_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/line1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="후기 학점"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="받은 멘트"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        app:layout_constraintTop_toBottomOf="@id/top_text_panel"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d9d9d9"
+        android:layout_marginTop="10dp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/line2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B+"
+                    android:textSize="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="궁금한 부분 잘 알려주시는데 먼저 연락이 오진 않아서 아쉬웠어요. 항상 제가 먼저 이야기하는 기분이라 친근하기보다는 사무적인 느낌이 들었어요. 좀 더 적극적으로 먼저 다가와 주시고 먼저 이야기를 해주시면 좋을 것 같아요. 그동안 감사했습니다."
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/round_shape"
+                    android:backgroundTint="#FEE6E2"
+                    android:padding="10dp"
+                    android:elevation="10dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d9d9d9"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B+"
+                    android:textSize="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="저의 첫 짝선배이신데 너무 잘 알려주시고 친절하셔서 좋았어요. 언제나 밝게 인사해주시고 감사해요. 그런데 약속 시간은 지켜주셨으면 좋겠어요.."
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/round_shape"
+                    android:backgroundTint="#FEE6E2"
+                    android:padding="10dp"
+                    android:elevation="10dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d9d9d9"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A0"
+                    android:textSize="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="열정적인 후배였습니다~ \n 묵묵히 해내는 모습이 멋있어요. \n 앞으로도 화이팅! \n 나보다 좋은 선배가 되길 바라요~"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/round_shape"
+                    android:backgroundTint="#FEE6E2"
+                    android:padding="10dp"
+                    android:elevation="10dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d9d9d9"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A+"
+                    android:textSize="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="후기 멘트 내용 \n후기 멘트 내용  \n후기 멘트 내용  \n후기 멘트 내용 "
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/round_shape"
+                    android:backgroundTint="#FEE6E2"
+                    android:padding="10dp"
+                    android:elevation="10dp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d9d9d9"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B0"
+                    android:textSize="40dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="후기 멘트 내용 \n후기 멘트 내용  \n후기 멘트 내용  \n후기 멘트 내용 "
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/round_shape"
+                    android:backgroundTint="#FEE6E2"
+                    android:padding="10dp"
+                    android:elevation="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="성결 친구"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="25dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/senior_matching_button"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:background="@drawable/match_people_main_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/class_matching_button"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/same_class_people_main_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#577CB3"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/main_page_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/main_page_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/alarm_page_button"
+            android:layout_width="75dp"
+            android:layout_height="62dp"
+            android:background="@drawable/alarm_page_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/matching_list_button"
+            android:layout_width="60dp"
+            android:layout_height="62dp"
+            android:background="@drawable/matching_list_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/mypage_button"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:background="@drawable/mypage_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

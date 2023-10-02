@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPage.review_write">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white"
+            android:id="@+id/back_arrow"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="후기 작성"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        tools:ignore="ExtraText">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/ic_account_circle_130"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9d9d9"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="후기 학점"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+
+            <ToggleButton
+                android:id="@+id/button_Aplus"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="A+"
+                android:textOn="A+"
+                android:textOff="A+"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/button_Azero"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="A0"
+                android:textOn="A0"
+                android:textOff="A0"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/button_Bplus"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="B+"
+                android:textOn="B+"
+                android:textOff="B+"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/button_Bzero"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="B0"
+                android:textOn="B0"
+                android:textOff="B0"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/button_Cplus"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text="C+"
+                android:textOn="C+"
+                android:textOff="C+"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/button_F"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:text= "F"
+                android:textOn="F"
+                android:textOff="F"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:background="@drawable/review_button"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9d9d9"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="하고 싶은 멘트"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9d9d9"/>
+
+        <EditText
+            android:id="@+id/reviewEditText"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:hint="지금까지 하고 싶었던 말을 남겨주세요"
+            android:inputType="textMultiLine"
+            android:maxLength="500"
+            android:paddingLeft="10dp"
+            android:gravity="top"/>
+
+        <TextView
+            android:id="@+id/charCountTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewEditText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="글자 수: 0/500"
+            android:layout_marginRight="10dp"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="99dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_shape"
+            android:text="작성 완료"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/finish_button"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

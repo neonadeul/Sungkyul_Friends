@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="335dp"
+    android:layout_height="321dp"
+    tools:context=".Calender.class_calender_dialog"
+    android:layout_gravity="center"
+    android:background="@drawable/round_shape_white">
+
+
+    <View
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line7"
+        android:background="#d9d9d9"
+        app:layout_constraintBottom_toBottomOf="@id/content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="left"
+        android:id="@+id/content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text= "학교 끝나고 혜화에서 만난 선배님과 연극을 봤다. 옥탑방 고양이 연극을 선배님과 보고 나와 편백집에 가서 밥을 먹었다. 후식으로 그릭 요거트까지 완벽했다! 선배님 다음에도 저랑 맛집 같이 가야해요!!ㅎㅎ 재밌었다:)"
+            android:textColor="#000000"
+            android:textSize="17dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line6"
+        android:background="#d9d9d9"
+        app:layout_constraintBottom_toTopOf="@id/content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/line6"
+        android:id="@+id/content_choice">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내용"
+            android:textColor="@color/black"
+            android:textSize="17dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line5"
+        android:background="#d9d9d9"
+        app:layout_constraintBottom_toTopOf="@id/content_choice"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toTopOf="@id/line5"
+        android:gravity="center"
+        android:id="@+id/time_choice">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/time_left">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간"
+                android:textColor="@color/black"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="33dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/time_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:00"
+                android:textColor="#000000"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line4"
+        android:background="#d9d9d9"
+        app:layout_constraintBottom_toTopOf="@id/time_choice"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toTopOf="@id/line4"
+        android:gravity="center"
+        android:id="@+id/space_choice">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/space_left">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="장소"
+                android:textColor="@color/black"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="33dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/space_right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="혜화"
+                android:textColor="#000000"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#A7CEDF"
+        app:layout_constraintBottom_toTopOf="@id/space_choice"
+        android:gravity="center"
+        android:id="@+id/day_choice">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="2023.05.30"
+            android:textColor="@color/black"
+            android:textSize="17dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/day_choice"
+        android:gravity="right"
+        android:layout_width="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_30"
+            android:id="@+id/close"/>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

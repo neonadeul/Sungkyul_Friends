@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="grade">
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
+    </string-array>
+
+    <string-array name="major">
+        <item>컴퓨터공학과</item>
+        <item>산업경영공학과</item>
+        <item>유아교육과</item>
+        <item>경영학과</item>
+        <item>미디어소프트웨어학과</item>
+    </string-array>
+
+    <string-array name="major_type">
+        <item>주전공</item>
+        <item>복수 전공</item>
+        <item>부전공</item>
+    </string-array>
+
+    <string-array name="class_name">
+        <item>소프트웨어 공학</item>
+        <item>컴퓨터 알고리즘</item>
+        <item>텍스트 마이닝</item>
+        <item>컴퓨터 네트워크</item>
+        <item>자바 웹 프로그래밍</item>
+    </string-array>
+
+    <string-array name="other_person_grade">
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
+    </string-array>
+    
+    <string-array name="friend_or_team">
+        <item>친구를 찾고있어요</item>
+        <item>팀원을 찾고있어요</item>
+    </string-array>
+
+    <string-array name="how_many">
+        <item>2명</item>
+        <item>3명</item>
+        <item>4명</item>
+    </string-array>
+
+    <string-array name="other_day">
+        <item>2023년 01월</item>
+        <item>2023년 02월</item>
+        <item>2023년 03월</item>
+        <item>2023년 04월</item>
+        <item>2023년 05월</item>
+        <item>2023년 06월</item>
+        <item>2023년 07월</item>
+        <item>2023년 08월</item>
+        <item>2023년 09월</item>
+        <item>2023년 10월</item>
+        <item>2023년 11월</item>
+        <item>2023년 12월</item>
+        <item>2024년 01월</item>
+        <item>2024년 02월</item>
+
+    </string-array>
+
+</resources>

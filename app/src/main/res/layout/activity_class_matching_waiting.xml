@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SameClass.class_matching_waiting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="같은 수업 듣는 사람 매칭"
+            android:textColor="@android:color/white"
+            android:textSize="17dp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#A7CEDF"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/class_choice">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="수업 고르기"
+            android:textColor="@color/black"
+            android:textSize="17dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#F5F7EF"
+        app:layout_constraintTop_toBottomOf="@id/class_choice"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/major_grade">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/major">
+
+
+            <Spinner
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:entries="@array/major_type"
+                android:gravity="right"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="33dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/grade">
+
+            <Spinner
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:gravity="right"
+                android:entries="@array/grade"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line1"
+        android:background="#d9d9d9"
+        app:layout_constraintTop_toBottomOf="@id/major_grade"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#F5F7EF"
+        app:layout_constraintTop_toBottomOf="@id/line1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/class_name"
+        android:paddingLeft="60dp">
+
+        <Spinner
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:gravity="left"
+            android:entries="@array/class_name"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line2"
+        android:background="#d9d9d9"
+        app:layout_constraintTop_toBottomOf="@id/class_name"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#F5F7EF"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/why"
+        android:paddingLeft="60dp">
+
+        <Spinner
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:entries="@array/friend_or_team"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line3"
+        android:background="#d9d9d9"
+        app:layout_constraintTop_toBottomOf="@id/why"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line4"
+        android:background="#d9d9d9"
+        app:layout_constraintTop_toBottomOf="@id/why"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/line4"
+        android:id="@+id/profile">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_account_circle_130"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_compare_arrows_31"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_account_circle_130"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/matching_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상대방의 매칭 수락을 기다리는 중입니다"
+        app:layout_constraintTop_toBottomOf="@id/profile"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#F5F7EF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/gender_choice">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/gender_left">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                android:textColor="@color/black"
+                android:textSize="17dp"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="33dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/gender_right">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상관 없음"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line5"
+        android:background="#d9d9d9"
+        app:layout_constraintBottom_toTopOf="@id/gender_choice"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#F5F7EF"
+        app:layout_constraintBottom_toTopOf="@id/line5"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/grade_choice">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/grade_left">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="학년"
+                android:textColor="@color/black"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="33dp"
+            android:background="#d9d9d9"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/grade_right">
+
+            <Spinner
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:entries="@array/other_person_grade"
+                android:gravity="right"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#A7CEDF"
+        app:layout_constraintBottom_toTopOf="@id/grade_choice"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/situation_choice">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="조건 고르기"
+            android:textColor="@color/black"
+            android:textSize="17dp"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="99dp"
+        android:layout_height="50dp"
+        android:text="매칭 취소"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:background="@drawable/round_shape"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/matching_text"
+        android:id="@+id/matching_button"
+        android:layout_marginTop="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

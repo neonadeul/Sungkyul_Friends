@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegister.join_personal_information">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_id"
+                android:layout_width="164dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="28dp"
+                android:hint="아이디"
+                android:paddingLeft="10dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_IdCheck"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_shape"
+                android:backgroundTint="#A7CEDF"
+                android:text="중복 확인" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_pw"
+            android:layout_width="262dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:hint="비밀번호"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/et_pw_ck"
+            android:layout_width="262dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:hint="비밀번호 확인"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:id="@+id/v_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:paddingLeft="10dp"
+            android:text="비밀번호가 일치합니다."
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="136dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:hint="이름"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="5dp"
+            android:text="성별:"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_gender1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="남자" />
+
+            <RadioButton
+                android:id="@+id/rb_gender2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="여자" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="5dp"
+            android:text="학년:"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/sp_year"
+            android:layout_width="136dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:entries="@array/grade" />
+
+        <EditText
+            android:id="@+id/et_studentID"
+            android:layout_width="218dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:hint="학번"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="5dp"
+            android:text="전공 선택:"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_dept1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="전공 심화" />
+
+            <RadioButton
+                android:id="@+id/rb_dept2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="복수 전공" />
+
+            <RadioButton
+                android:id="@+id/rb_dept3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="부전공" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="5dp"
+            android:text="학과:"
+            android:textSize="18dp" />
+
+        <Spinner
+            android:id="@+id/sp_dept"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:entries="@array/major" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/next_button"
+            android:layout_width="99dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_shape"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

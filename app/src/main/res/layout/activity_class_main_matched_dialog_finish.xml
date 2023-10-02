@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="335dp"
+    android:layout_height="321dp"
+    tools:context=".SeniorAndJunior.class_matched_firendFirst"
+    android:background="@drawable/round_shape_white">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="-30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매칭이 취소되었습니다."
+            android:textSize="20dp" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_30"
+            android:id="@+id/close"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/review_button"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_shape"
+            android:gravity="center"
+            android:text="후기 남기러 가기"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="185dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="새로운 매칭하러 가기"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:background="@drawable/round_shape"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_matching_button"
+            android:id="@+id/new_matching_button"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

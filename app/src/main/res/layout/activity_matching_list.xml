@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatchingList.matching_list">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="매칭 목록"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
+        app:layout_constraintBottom_toTopOf="@id/bottom_panel"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/topPanel">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friend_matching"
+                    android:text="짝선배 짝후배"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="99dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="확인하기"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:background="@drawable/round_shape"
+                        android:id="@+id/check_button"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="99dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="매칭취소"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:background="@drawable/round_shape"
+                        android:id="@+id/cancel_button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d9d9d9"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_panel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#577CB3"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/main_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/main_page_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/alarm_page_button"
+            android:layout_width="75dp"
+            android:layout_height="62dp"
+            android:background="@drawable/alarm_page_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/matching_list_button"
+            android:layout_width="60dp"
+            android:layout_height="62dp"
+            android:background="@drawable/matching_list_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/mypage_button"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:background="@drawable/mypage_icon"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

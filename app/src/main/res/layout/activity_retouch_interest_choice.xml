@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginRegister.retouch_interest_choice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/topPanel"
+        android:background="#577CB3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="관심사 수정"
+            android:textColor="@android:color/white"
+            android:textSize="19dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/interest_choice_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보다 원활한 매칭을 위해 관심사를 선택해주세요"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:background="@drawable/round_shape"
+        android:backgroundTint="#A7CEDF"
+        android:padding="7dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn1"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# IT"
+            android:textOn="# IT"
+            android:textOff="# IT"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn2"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 게임"
+            android:textOn="# 게임"
+            android:textOff="# 게임"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn3"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 공연"
+            android:textOn="# 공연"
+            android:textOff="# 공연"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn4"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 그림"
+            android:textOn="# 그림"
+            android:textOff="# 그림"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn5"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 노래"
+            android:textOn="# 노래"
+            android:textOff="# 노래"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn6"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 댄스"
+            android:textOn="# 댄스"
+            android:textOff="# 댄스"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn7"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 독서"
+            android:textOn="# 독서"
+            android:textOff="# 독서"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn8"
+            android:layout_width="106dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 드라마"
+            android:textOn="# 드라마"
+            android:textOff="# 드라마"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn9"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 만화"
+            android:textOn="# 만화"
+            android:textOff="# 만화"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn10"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 미용"
+            android:textOn="# 미용"
+            android:textOff="# 미용"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn11"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 반려동물"
+            android:textOn="# 반려동물"
+            android:textOff="# 반려동물"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn12"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 쇼핑"
+            android:textOn="# 쇼핑"
+            android:textOff="# 쇼핑"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn13"
+            android:layout_width="72dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 술"
+            android:textOn="# 술"
+            android:textOff="# 술"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn14"
+            android:layout_width="106dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 스포츠"
+            android:textOn="# 스포츠"
+            android:textOff="# 스포츠"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn15"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 실험"
+            android:textOn="# 실험"
+            android:textOff="# 실험"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn16"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 악기"
+            android:textOn="# 악기"
+            android:textOff="# 악기"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn17"
+            android:layout_width="106dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 연예인"
+            android:textOn="# 연예인"
+            android:textOff="# 연예인"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn18"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 영화"
+            android:textOn="# 영화"
+            android:textOff="# 영화"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="15dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn19"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 외국어"
+            android:textOn="# 외국어"
+            android:textOff="# 외국어"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn20"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 요리"
+            android:textOn="# 요리"
+            android:textOff="# 요리"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn21"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 운동"
+            android:textOn="# 운동"
+            android:textOff="# 운동"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="10dp">
+
+
+        <ToggleButton
+            android:id="@+id/interest_btn22"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 음악듣기"
+            android:textOn="# 음악듣기"
+            android:textOff="# 음악듣기"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn23"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/interest_button"
+            android:text="# 자기계발"
+            android:textOn="# 자기계발"
+            android:textOff="# 자기계발"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ToggleButton
+            android:id="@+id/interest_btn24"
+            android:layout_width="90dp"
+            android:layout_height="50dp"
+            android:background="@drawable/interest_button"
+            android:text="# 패션"
+            android:textOn="# 패션"
+            android:textOff="# 패션"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/retouch_interest_button"
+        android:layout_width="99dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_shape"
+        android:text="수정"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
