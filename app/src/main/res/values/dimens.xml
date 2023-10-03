@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_spacing">160dp</dimen> <!-- 원하는 간격 값을 여기에 설정 -->
+    <dimen name="min_bubble_width">100dp</dimen> <!-- 원하는 최소 말풍선 너비 값을 여기에 설정 -->
+    <dimen name="max_bubble_width">300dp</dimen> <!-- 원하는 최대 말풍선 너비 값을 여기에 설정 -->
+</resources>

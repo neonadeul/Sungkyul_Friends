@@ -86,17 +86,15 @@ public class GetMatchingPartnerID {
             }
         };
 
-        // MatchingPartnerID 생성 시 Context 전달
-        MatchingPartnerID matchingPartnerID = MatchingPartnerID.getInstance(context, userID, responseListener, new Response.ErrorListener() {
+        // 여기서 MatchingPartnerID를 새로 생성하도록 변경
+        MatchingPartnerID matchingPartnerID = new MatchingPartnerID(context, userID, responseListener, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("에러", error.getMessage());
             }
         });
 
-        // RequestQueue에 추가
         queue.add(matchingPartnerID);
-
     }
 
     public String getPartnerID() {

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,13 +25,18 @@ import com.gmail.sungkyulfriends.MainActivity;
 import com.gmail.sungkyulfriends.MatchingList.matching_list;
 import com.gmail.sungkyulfriends.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class class_main_friendMatching extends AppCompatActivity {
 
     private Button matching_button;
     private Dialog matching_result_dialog;
-    private Spinner sp_dept, sp_year;
+    private Spinner sp_year;
     private RadioButton man, woman, doesntMatter;
+    private TextView main_dept_text;
+    public String main_dept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +45,14 @@ public class class_main_friendMatching extends AppCompatActivity {
 
         // 아이디 값 찾아주기
         matching_button = findViewById(R.id.matching_button);
-        sp_dept = findViewById(R.id.sp_dept);
         sp_year = findViewById(R.id.sp_year);
         man= findViewById(R.id.man);
         woman = findViewById(R.id.woman);
         doesntMatter = findViewById(R.id.doesntMatter);
 
-        // login_page에서 userID값 받아오기
-        //Intent intent = getIntent();
-        //String userID = intent.getStringExtra("userID");
+        // login_page에서 userID, userPass값 받아오기
         String userID = login_page.userID;
+        String userPassword = login_page.userPass;
 
 
         ImageView back_arrow= findViewById(R.id.back_arrow);
@@ -60,12 +64,56 @@ public class class_main_friendMatching extends AppCompatActivity {
             }
         });
 
+        // LoginRequest 서버 응답에서 main_dept값 받아오기
+        // 서버 응답을 처리하는 리스너 설정
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // 서버 응답 처리 코드 작성
+                // response 변수에 서버 응답이 포함됩니다.
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    main_dept = jsonObject.getString("main_dept");
+
+                    // 학과 주전공으로 뜨게하기
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            main_dept_text = findViewById(R.id.main_dept_text);
+                            main_dept_text.setText(main_dept);
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // 에러 발생 시 처리하는 코드 작성
+                Log.d("loginRequest 에러", "main_dept값 못가져옴");
+            }
+        };
+
+        // LoginRequest 객체 생성 및 요청 전송
+        LoginRequest loginRequest = new LoginRequest(userID, userPassword, responseListener, errorListener);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(loginRequest);
+
+
+//        // 학과 주전공으로 뜨게하기
+//        TextView main_dept_text = findViewById(R.id.main_dept_text);
+//        main_dept_text.setText(main_dept);
+
         // 매칭 버튼 클릭시 수행
         matching_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String wantdept = sp_dept.getSelectedItem().toString();
+                String wantdept = main_dept_text.getText().toString();
                 String wantyear = sp_year.getSelectedItem().toString();
                 String wantsex = null;
 

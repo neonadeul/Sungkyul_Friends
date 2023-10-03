@@ -76,6 +76,31 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:text="이름"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="@drawable/right_botom_line"/>
+
+
+        <TextView
+            android:id="@+id/partner_name_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="상대방 이름"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bottom_line"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:text="주전공"
             android:textColor="@color/black"
             android:textSize="18dp"
@@ -84,34 +109,11 @@
             android:layout_rowWeight="1"
             android:background="@drawable/right_botom_line"/>
 
-
         <TextView
+            android:id="@+id/partner_dept_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="컴퓨터 공학과"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/bottom_line"/>
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="복수 전공"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/right_botom_line"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="산업경영공학과"
+            android:text="주전공 학과"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:gravity="center"
@@ -122,7 +124,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="부전공"
+            android:text="학번"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:gravity="center"
@@ -131,13 +133,14 @@
             android:background="@drawable/right_botom_line"/>
 
         <TextView
+            android:id="@+id/partner_studentID_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:background="@drawable/bottom_line"
             android:gravity="center"
-            android:text="      "
+            android:text="상대방 학번"
             android:textColor="@color/black"
             android:textSize="18dp"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -145,36 +148,24 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="4학년"
+            android:text="성별"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:gravity="center"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:background="@drawable/right_botom_line"/>
+            android:background="@drawable/right_line"/>
 
         <TextView
+            android:id="@+id/partner_sex_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="여자"
+            android:text="상대방 성별"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:gravity="center"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/bottom_line"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:text="관심사: IT, 게임, 노래, 반려동물, 악기"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_rowSpan="4"
-            android:layout_columnSpan="2"/>
+            android:layout_rowWeight="1"/>
 
     </GridLayout>
 

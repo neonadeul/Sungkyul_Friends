@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gmail.sungkyulfriends.MainActivity;
+import com.gmail.sungkyulfriends.MyPage.other_person_profile;
 import com.gmail.sungkyulfriends.R;
 import com.gmail.sungkyulfriends.MatchingList.matching_alarm_list;
 import com.gmail.sungkyulfriends.MatchingList.matching_list;
@@ -28,6 +29,7 @@ public class class_matched_firendFirst extends AppCompatActivity {
     private ImageButton matching_list_button;
     private ImageButton mypage_button;
     private ImageButton main_page_button;
+    public String partner_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class class_matched_firendFirst extends AppCompatActivity {
         setContentView(R.layout.activity_class_main_matched_first);
 
         // 상대방 이름으로 보여주기
-        GetMatchingPartnerID getMatchingPartnerID = new GetMatchingPartnerID(this);
+        GetMatchingPartnerID getMatchingPartnerID = new GetMatchingPartnerID(this.getApplicationContext());
         TextView partnerNameTextView = findViewById(R.id.partner_name);
 
         getMatchingPartnerID.setOnPartnerInfoReceivedListener(new GetMatchingPartnerID.OnPartnerInfoReceivedListener() {
@@ -46,12 +48,26 @@ public class class_matched_firendFirst extends AppCompatActivity {
                     @Override
                     public void run() {
                         partnerNameTextView.setText(name);
+                        partner_name = name;
                         Log.d("상대방이름: ", name);
 
                     }
                 });
             }
         });
+
+        // 상대방 프로필 눌렀을때 상대방 프로필 화면으로 전환
+        // other_person_profile로 partner_name값 전달
+        ImageView partner_profile = findViewById(R.id.partner_profile);
+        partner_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(class_matched_firendFirst.this, other_person_profile.class);
+                intent.putExtra("partner_name", partner_name);
+                startActivity(intent);
+            }
+        });
+
 
         alarm_page_button = findViewById(R.id.alarm_page_button);
         alarm_page_button.setOnClickListener(new View.OnClickListener() {
