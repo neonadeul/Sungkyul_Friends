@@ -27,6 +27,7 @@ public class login_page extends AppCompatActivity {
     private Button login_button, join_button;
     private EditText et_id, et_pw;
     public static String userID;
+    public static String userPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class login_page extends AppCompatActivity {
             public void onClick(View v) {
                 //EditText에 현재 입력되어 있는 값을 가져온다
                 userID = et_id.getText().toString(); //String 뻄
-                String userPass = et_pw.getText().toString();
+                userPass = et_pw.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
