@@ -1,0 +1,21 @@
+<!-- res/drawable/bubble_shape.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 말풍선 배경 -->
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#FF0000" /> <!-- 배경색을 원하는 색상 코드로 변경하세요. -->
+            <corners android:radius="16dp" /> <!-- 모서리를 둥글게 만들기 위해 radius 값을 조절하세요. -->
+        </shape>
+    </item>
+
+    <!-- 말풍선 왼쪽 삐져나온 부분 -->
+    <item android:left="16dp">
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- 배경색을 원하는 색상 코드로 변경하세요. -->
+            <corners android:topLeftRadius="16dp" /> <!-- 상단의 왼쪽 모서리를 둥글게 만들기 위해 radius 값을 조절하세요. -->
+            <corners android:bottomLeftRadius="16dp" /> <!-- 하단의 왼쪽 모서리를 둥글게 만들기 위해 radius 값을 조절하세요. -->
+        </shape>
+    </item>
+</layer-list>
