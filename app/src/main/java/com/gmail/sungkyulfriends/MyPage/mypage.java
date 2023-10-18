@@ -33,6 +33,14 @@ public class mypage extends AppCompatActivity {
             }
         });
 
+        TextView certification_button = findViewById(R.id.certification_button);
+        certification_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mypage.this, school_accreditation_choice.class);
+                startActivity(intent);
+            }
+        });
         TextView calender= findViewById(R.id.calender);
         calender.setOnClickListener(new View.OnClickListener() {
             @Override

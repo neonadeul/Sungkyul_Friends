@@ -56,19 +56,17 @@
             android:layout_height="48dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/round_shape_white"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/Button_send"
             android:layout_width="70dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:text="입력"
             android:textColor="@color/white"
-            android:textSize="18dp"
-            android:background="@drawable/round_shape"/>
+            android:textSize="18dp" />
 
 
     </LinearLayout>
