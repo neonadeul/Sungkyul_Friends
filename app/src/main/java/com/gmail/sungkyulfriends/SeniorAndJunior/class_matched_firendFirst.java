@@ -31,6 +31,8 @@ public class class_matched_firendFirst extends AppCompatActivity {
     private ImageButton main_page_button;
     public String partner_name;
 
+    public String Chat_PartnerID; //짝선배-짝후배(ChatActivity.java)에 상대방ID 넘기기 위해
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,7 @@ public class class_matched_firendFirst extends AppCompatActivity {
                         partner_name = name;
                         Log.d("상대방이름: ", name);
 
+                        Chat_PartnerID=partnerID;
                     }
                 });
             }
@@ -123,6 +126,7 @@ public class class_matched_firendFirst extends AppCompatActivity {
                 Intent intent = new Intent(class_matched_firendFirst.this, ChatActivity.class);
                 // ChatActivity로 name값 넘겨주기
                 intent.putExtra("name", name);
+                intent.putExtra("partnerID", Chat_PartnerID);
                 startActivity(intent);
             }
         });

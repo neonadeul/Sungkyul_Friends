@@ -18,13 +18,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     private int spacing;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView TextView_nickname;
+        public TextView TextView_sender;
         public TextView TextView_msg;
         public View rootView;
 
         public MyViewHolder(View v) {
             super(v);
-            TextView_nickname = v.findViewById(R.id.TextView_nickname);
+            TextView_sender = v.findViewById(R.id.TextView_sender);
             TextView_msg = v.findViewById(R.id.TextView_msg);
             rootView = v;
         }
@@ -61,25 +61,27 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ChatData chat = mDataset.get(position);
 
-        holder.TextView_nickname.setText(chat.getNickname());
+        holder.TextView_sender.setText(chat.getSender());
         holder.TextView_msg.setText(chat.getMsg());
 
-        if (chat.getNickname().equals(this.myNickName)) {
+        if (chat.getSender().equals(this.myNickName)) {
             // 자신의 메시지일 경우, 오른쪽 정렬 및 말풍선 스타일 적용
             holder.TextView_msg.setBackgroundResource(R.drawable.chat_bubble_right);
             holder.rootView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.TextView_msg.getLayoutParams();
-            params.setMargins(dpToPx(8), 8, 8, 0); // 여백을 dp로 설정 (원하는 크기로 수정)
+            params.setMargins(dpToPx(30), 30, 30, 0); // 여백을 dp로 설정 (원하는 크기로 수정)
+            holder.TextView_msg.setPadding(dpToPx(15), 10, 10, 10);
             holder.TextView_msg.setLayoutParams(params);
-            holder.TextView_nickname.setVisibility(View.GONE); // 닉네임을 숨김
+            holder.TextView_sender.setVisibility(View.GONE); // 닉네임을 숨김
         } else {
             // 상대방의 메시지일 경우, 왼쪽 정렬 및 말풍선 스타일 적용
             holder.TextView_msg.setBackgroundResource(R.drawable.chat_bubble_left);
             holder.rootView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.TextView_msg.getLayoutParams();
-            params.setMargins(dpToPx(8), 0, 0, 0); // 여백을 dp로 설정 (원하는 크기로 수정)
+            params.setMargins(dpToPx(30), 30, 30, 0); // 여백을 dp로 설정 (원하는 크기로 수정)
+            holder.TextView_msg.setPadding(dpToPx(15), 10, 10, 10);
             holder.TextView_msg.setLayoutParams(params);
-            holder.TextView_nickname.setVisibility(View.VISIBLE); // 닉네임을 표시
+            holder.TextView_sender.setVisibility(View.VISIBLE); // 닉네임을 표시
         }
 
         // 메시지 내용의 길이에 따라 말풍선의 크기 동적으로 조절

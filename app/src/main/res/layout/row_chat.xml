@@ -8,7 +8,7 @@
     <!-- A CardView that contains a TextView -->
     <TextView
         android:textSize="12sp"
-        android:id="@+id/TextView_nickname"
+        android:id="@+id/TextView_sender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView

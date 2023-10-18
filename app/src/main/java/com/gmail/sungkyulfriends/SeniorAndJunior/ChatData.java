@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ChatData {
     private String msg;
-    private String nickname;
+    private String sender;
 
     public String getMsg() {
         return msg;
@@ -14,11 +14,11 @@ public class ChatData {
         this.msg = msg;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getSender() {
+        return sender;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 }
