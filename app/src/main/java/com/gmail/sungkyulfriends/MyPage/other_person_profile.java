@@ -15,7 +15,7 @@ import com.gmail.sungkyulfriends.R;
 import com.gmail.sungkyulfriends.SeniorAndJunior.GetMatchingPartnerID;
 import com.gmail.sungkyulfriends.SeniorAndJunior.class_matched_firendFirst;
 
-public class other_person_profile extends AppCompatActivity {
+public class other_person_profile extends AppCompatActivity implements GetCalScore.OnTotalScoreReceivedListener{
 
     private Button more_review_button;
 
@@ -33,6 +33,35 @@ public class other_person_profile extends AppCompatActivity {
             }
         });
 
+        // 상대방 평균후기학점
+//        GetCalScore getCalScore = new GetCalScore(other_person_profile.this, this); // 리스너 등록
+//        String total_score = getCalScore.getTotal_score();
+//        onTotalScoreReceived(total_score);
+
+        // 상대방 평균후기학점
+        GetCalScore getCalScore = new GetCalScore(other_person_profile.this, new GetCalScore.OnTotalScoreReceivedListener() {
+            @Override
+            public void onTotalScoreReceived(String totalScore) {
+                // total_score가 설정된 후에 호출되는 메서드
+                TextView avg_score = findViewById(R.id.avg_score);
+                avg_score.setText(totalScore);
+
+                // 받은 후기멘트 보러가기 버튼 활성화
+                more_review_button.setEnabled(true);
+            }
+        });
+
+        // 받은 후기멘트 보러가기 버튼
+        more_review_button = findViewById(R.id.more_review_button);
+        more_review_button.setEnabled(false); // 일단 비활성화 상태로 초기화
+        more_review_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(other_person_profile.this, other_person_review_page.class);
+                intent.putExtra("total_score", getCalScore.getTotal_score());
+                startActivity(intent);
+            }
+        });
 
         // 상대방 이름
         TextView partner_name_text = findViewById(R.id.partner_name_text);
@@ -68,5 +97,12 @@ public class other_person_profile extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onTotalScoreReceived(String totalScore) {
+        // total_score가 설정된 후에 호출되는 메서드
+        TextView avg_score = findViewById(R.id.avg_score);
+        avg_score.setText(totalScore);
     }
 }

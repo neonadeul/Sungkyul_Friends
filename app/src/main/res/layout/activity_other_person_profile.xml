@@ -46,9 +46,12 @@
         <ImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:src="@drawable/ic_account_circle_130"/>
+            android:src="@drawable/ic_account_circle_130"
+            android:layout_gravity="center"/>
+
 
         <TextView
+            android:id="@+id/avg_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A+"
@@ -57,7 +60,7 @@
             android:background="@drawable/circle_background"
             android:padding="10dp"
             android:layout_gravity="bottom|end"
-            android:layout_marginLeft="80dp"/>
+            android:layout_marginLeft="120dp"/>
 
     </FrameLayout>
     

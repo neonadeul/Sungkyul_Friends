@@ -18,7 +18,7 @@ public class GetMatchingPartnerID {
     Context context; // Context 변수 추가
     RequestQueue queue; // RequestQueue 변수 추가
 
-    private String partnerID;
+    public static String partnerID;
     private String name;
     private String sex;
     private String main_dept;
