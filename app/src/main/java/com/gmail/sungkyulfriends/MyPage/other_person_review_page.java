@@ -1,10 +1,12 @@
 package com.gmail.sungkyulfriends.MyPage;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +26,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class other_person_review_page extends AppCompatActivity implements GetCalScore.OnTotalScoreReceivedListener{
+public class other_person_review_page extends AppCompatActivity implements GetCalScore.OnTotalScoreReceivedListener {
+
+    // 상대방 리뷰 페이지
 
     RecyclerView recyclerView;
     ReviewAdapter adapter;
@@ -50,7 +54,6 @@ public class other_person_review_page extends AppCompatActivity implements GetCa
         String total_score = intent.getStringExtra("total_score");
         onTotalScoreReceived(total_score);
 
-
         // 파트너 아이디값 가져와서 receiver 변수에 넣기
         String receiver = GetMatchingPartnerID.partnerID;
 
@@ -60,7 +63,6 @@ public class other_person_review_page extends AppCompatActivity implements GetCa
         LinearLayoutManager layoutManager = new LinearLayoutManager(other_person_review_page.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ReviewAdapter(new ArrayList<>());
-
 
         // 서버에서 ViewReviewRequest를 통해 리뷰 가져오기
         Response.Listener<String> response_listener = new Response.Listener<String>() {
@@ -78,25 +80,28 @@ public class other_person_review_page extends AppCompatActivity implements GetCa
 
                     if (success) {
                         // 리뷰 데이터에 접근
-                        for (int i = 0; i < jsonObject.length() - 1; i++) {
-                            JSONObject review = jsonObject.getJSONObject(String.valueOf(i));
-                            String score = review.getString("score");
-                            String content = review.getString("content");
+//                        if (jsonObject.has("0")) {  // 리뷰가 존재하는 경우
+                        if (jsonObject.length() > 0) {  // 리뷰가 존재하는 경우
+                            for (int i = 0; i < jsonObject.length() - 1; i++) {
+                                JSONObject review = jsonObject.getJSONObject(String.valueOf(i));
+                                String score = review.getString("score");
+                                String content = review.getString("content");
 
-                            // 이제 score와 content를 사용할 수 있습니다.
-                            Log.d("리뷰학점: ", score);
-                            Log.d("리뷰내용: ", content);
+                                // 이제 score와 content를 사용할 수 있습니다.
+                                Log.d("리뷰학점: ", score);
+                                Log.d("리뷰내용: ", content);
 
-                            adapter.addItem(new ReviewData(score, content));
+                                adapter.addItem(new ReviewData(score, content));
+                            }
+                            // 리사이클러뷰에 어댑터를 연결한다.
+                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged(); // 어댑터에게 데이터가 변경되었음을 알려준다.
 
+                        } else { // 리뷰가 없는 경우
+                            // "상대방이 받은 리뷰가 없습니다" 다이얼로그 띄우기
+                            showNoReviewDialog();
+                            Log.d("리뷰가 없는경우, ", "리뷰없음");
                         }
-                        // 리사이클러뷰에 어댑터를 연결한다.
-                        recyclerView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged(); // 어댑터에게 데이터가 변경되었음을 알려준다.
-
-                        // onTotalScoreReceived 호출
-                        onTotalScoreReceived(total_score);
-
 
                     } else {
                         // 서버에서 오류가 발생한 경우
@@ -109,13 +114,10 @@ public class other_person_review_page extends AppCompatActivity implements GetCa
                 }
             }
         };
+
         // GetMatchingPartnerID에서 partnerID 가져와서 receiver에 넣어주기 (안돼서 그냥 public 해버림)
-//        GetMatchingPartnerID getMatchingPartnerID = new GetMatchingPartnerID(this); // this에는 Context가 전달되어야 합니다.
-//        String receiver = getMatchingPartnerID.getPartnerID();
-
-
         // 서버로 Volley를 이용해서 요청을 함
-        ViewReviewRequest viewReviewRequest = new ViewReviewRequest(receiver, response_listener, new Response.ErrorListener(){
+        ViewReviewRequest viewReviewRequest = new ViewReviewRequest(receiver, response_listener, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("error", error.getMessage());
@@ -125,11 +127,25 @@ public class other_person_review_page extends AppCompatActivity implements GetCa
         queue.add(viewReviewRequest);
     }
 
-
     @Override
     public void onTotalScoreReceived(String totalScore) {
         // total_score가 설정된 후에 호출되는 메서드
         TextView avg_score = findViewById(R.id.avg_score);
         avg_score.setText(totalScore);
+    }
+
+    // "상대방이 받은 리뷰가 없습니다" 다이얼로그를 띄우는 함수
+    private void showNoReviewDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("상대방이 받은 리뷰가 없습니다")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // 확인을 눌렀을 때 실행되는 코드
+                        Intent intent = new Intent(other_person_review_page.this, other_person_profile.class); // 다른 화면으로 이동
+                        startActivity(intent);
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

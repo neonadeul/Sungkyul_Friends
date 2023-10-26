@@ -3,6 +3,8 @@ package com.gmail.sungkyulfriends.MyPage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,12 +50,16 @@ public class other_person_profile extends AppCompatActivity implements GetCalSco
 
                 // 받은 후기멘트 보러가기 버튼 활성화
                 more_review_button.setEnabled(true);
+                more_review_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#FEE6E2")));
+                more_review_button.setText("받은 후기멘트 보러가기");
             }
         });
 
         // 받은 후기멘트 보러가기 버튼
         more_review_button = findViewById(R.id.more_review_button);
         more_review_button.setEnabled(false); // 일단 비활성화 상태로 초기화
+        more_review_button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#d9d9d9")));
+        more_review_button.setText("받은 리뷰가 없습니다");
         more_review_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
