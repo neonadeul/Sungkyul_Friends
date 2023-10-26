@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class retouchRequest extends StringRequest {
 
-    private static final String URL = "http://3.34.20.219/Interest.php";
+    private static final String URL = "http://3.34.20.219/UpdateInfo/updateInterest.php";
     private Map<String, String> params;
 
     public retouchRequest(String userID, String[] interestArray, Response.Listener<String> listener, Response.ErrorListener errorListener) {

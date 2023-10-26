@@ -34,19 +34,12 @@ import java.util.Set;
 
 public class retouch_interest_choice extends AppCompatActivity {
 
-    private Button join_button;
+    private Button retouch_interest_button;
     private List<ToggleButton> toggleButtons = new ArrayList<>(); // 토글 버튼 리스트
     private int selectedCount = 0; // 선택된 항목 수
     private static final String PREFS_NAME = "UserInterests";
     private static final int MAX_INTERESTS = 5; // 최대 선택 가능한 관심사 수
     private List<String> interestArray = new ArrayList<>(); // 사용자가 선택한 관심사 리스트
-
-    // SharedPreferences에서 선택한 관심사 로드
-    private List<String> loadSelectedInterests() {
-        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        Set<String> interests = preferences.getStringSet("selectedInterests", new HashSet<>());
-        return new ArrayList<>(interests);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +84,12 @@ public class retouch_interest_choice extends AppCompatActivity {
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn23));
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn24));
 
+        // 서버로부터 최신 관심사 정보를 가져와 Toggle 버튼에 설정
+        loadLatestInterests();
+
         // 선택한 관심사를 토글 버튼에 적용
         for (ToggleButton toggleButton : toggleButtons) {
-            String interest = toggleButton.getText().toString();
+            String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
             toggleButton.setChecked(interestArray.contains(interest));
             toggleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,11 +105,13 @@ public class retouch_interest_choice extends AppCompatActivity {
                     if (selectedCount > 5) {
                         toggleButton.setChecked(false);
                         showSelectionLimitDialog();
+                    }
+                }
+            });
+        }
 
-        }}});}
-
-        join_button = findViewById(R.id.retouch_interest_button);
-        join_button.setOnClickListener(new View.OnClickListener() {
+        retouch_interest_button = findViewById(R.id.retouch_interest_button);
+        retouch_interest_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 사용자가 선택한 관심사를 배열로 만들기
@@ -134,6 +132,38 @@ public class retouch_interest_choice extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // SharedPreferences에서 선택한 관심사 로드
+    private List<String> loadSelectedInterests() {
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        Set<String> interests = preferences.getStringSet("selectedInterests", new HashSet<>());
+        return new ArrayList<>(interests);
+    }
+
+    // 서버로부터 최신 관심사 정보를 가져오고 Toggle 버튼에 설정
+    private void loadLatestInterests() {
+        // 서버에서 최신 관심사 정보를 가져올 메서드를 호출
+        // 이 예제에서는 하드 코딩된 최신 관심사 정보를 사용합니다.
+
+        List<String> latestInterests = getLatestInterestsFromServer(); // 서버에서 최신 정보를 가져오는 메서드
+        if (latestInterests != null) {
+            for (ToggleButton toggleButton : toggleButtons) {
+                String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
+                toggleButton.setChecked(latestInterests.contains(interest));
+            }
+        }
+    }
+
+    // 서버에서 최신 관심사 정보를 가져오는 메서드
+    private List<String> getLatestInterestsFromServer() {
+        // 여기에 서버로부터 최신 관심사 정보를 가져오는 코드를 구현하세요.
+        // 실제 서버와 통신하여 데이터를 가져오거나 로컬 데이터베이스에서 데이터를 로드할 수 있습니다.
+        // 이 메서드를 사용하여 최신 정보를 가져옵니다.
+
+        // 이 예제에서는 하드 코딩된 최신 관심사 목록을 반환합니다.
+        List<String> latestInterests = new ArrayList<>();
+        return latestInterests;
     }
 
     // 사용자가 선택한 관심사를 배열로 만들기
@@ -165,7 +195,6 @@ public class retouch_interest_choice extends AppCompatActivity {
     }
 
     // 서버로 요청 보내기
-    // 서버로 요청 보내기
     private void sendRequestToServer(final List<String> interests) {
         // Check if the interestArray is empty or not
         if (interests.isEmpty()) {
@@ -190,7 +219,6 @@ public class retouch_interest_choice extends AppCompatActivity {
                         handleError(error);
                     }
                 });
-
 
         // Volley 요청 큐에 요청 추가
         RequestQueue queue = Volley.newRequestQueue(retouch_interest_choice.this);
