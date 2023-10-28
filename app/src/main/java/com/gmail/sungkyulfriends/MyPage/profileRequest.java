@@ -36,29 +36,8 @@ public class profileRequest extends StringRequest {
 
     // 서버 응답 처리
     @Override
-    protected Response<String> parseNetworkResponse(com.android.volley.NetworkResponse response) {
-        try {
-            String json = new String(response.data, "UTF-8");
-            return Response.success(json, getCacheEntry());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return super.parseNetworkResponse(response);
-    }
-
-    // 서버 응답을 전달
-    @Override
     protected void deliverResponse(String response) {
-        if (listener != null) {
-            listener.onResponse(response);
-        }
-    }
-
-    // 서버 에러를 전달
-    @Override
-    public void deliverError(com.android.volley.VolleyError error) {
-        if (errorListener != null) {
-            errorListener.onErrorResponse(error);
-        }
+        // 요청이 성공했을 때 호출될 콜백 함수
+        listener.onResponse(response);
     }
 }
