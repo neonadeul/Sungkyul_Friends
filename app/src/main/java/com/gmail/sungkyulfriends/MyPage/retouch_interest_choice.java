@@ -18,7 +18,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.gmail.sungkyulfriends.LoginRegister.login_page;
 import com.gmail.sungkyulfriends.R;
@@ -28,10 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class retouch_interest_choice extends AppCompatActivity {
@@ -58,6 +55,7 @@ public class retouch_interest_choice extends AppCompatActivity {
             }
         });
 
+
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn1));
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn2));
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn3));
@@ -83,33 +81,14 @@ public class retouch_interest_choice extends AppCompatActivity {
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn23));
         toggleButtons.add((ToggleButton) findViewById(R.id.interest_btn24));
 
+
         loadUserInterests();
-
-        for (ToggleButton toggleButton : toggleButtons) {
-            toggleButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (toggleButton.isChecked()) {
-                        selectedCount++;
-                    } else {
-                        selectedCount--;
-                    }
-
-                    if (selectedCount > MAX_INTERESTS) {
-                        toggleButton.setChecked(false);
-                        showSelectionLimitDialog();
-                    }
-                }
-            });
-        }
 
         retouch_interest_button = findViewById(R.id.retouch_interest_button);
         retouch_interest_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 interestArray = getSelectedInterests();
-                Log.d("retouch_interest_choice", "userID: " + login_page.userID);
-                Log.d("retouch_interest_choice", "interestArray: " + interestArray.toString());
 
                 if (interestArray.size() > MAX_INTERESTS) {
                     showSelectionLimitDialog();
@@ -131,8 +110,10 @@ public class retouch_interest_choice extends AppCompatActivity {
     private void loadUserInterests() {
         String userID = login_page.userID;
         String serverUrl = "http://3.34.20.219/Interest.php?userID=" + userID;
+        List<String> interestList = getSelectedInterests();  // Assuming this returns the List<String>
+        String[] interestArray = interestList.toArray(new String[0]);
 
-        StringRequest getUserInterestsRequest = new StringRequest(Request.Method.GET, serverUrl,
+        GetDataRequest getDataRequest = new GetDataRequest(userID, interestArray,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -147,7 +128,7 @@ public class retouch_interest_choice extends AppCompatActivity {
                 });
 
         RequestQueue queue = Volley.newRequestQueue(retouch_interest_choice.this);
-        queue.add(getUserInterestsRequest);
+        queue.add(getDataRequest);
     }
 
     private void parseAndSetUserInterests(String response) {
@@ -206,11 +187,6 @@ public class retouch_interest_choice extends AppCompatActivity {
     }
 
     private void sendRequestToServer(final List<String> interests) {
-        if (interests.isEmpty()) {
-            Toast.makeText(retouch_interest_choice.this, "최소 1개 이상의 관심사를 선택해주세요.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         String serverUrl = "http://3.34.20.219/UpdateInfo/updateInterest.php";
 
         JSONArray jsonArray = new JSONArray();
@@ -220,7 +196,8 @@ public class retouch_interest_choice extends AppCompatActivity {
 
         String interestsStr = jsonArray.toString();
 
-        StringRequest request = new StringRequest(Request.Method.POST, serverUrl,
+        // Request를 보내기 전에 UserID 및 interestsArray 파라미터 설정
+        retouchRequest request = new retouchRequest(login_page.userID, new String[]{interestsStr},
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -232,16 +209,7 @@ public class retouch_interest_choice extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         handleError(error);
                     }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("userID", login_page.userID);
-                params.put("interestArray", interestArray.toString());
-                return params;
-            }
-        };
+                });
 
         RequestQueue queue = Volley.newRequestQueue(retouch_interest_choice.this);
         queue.add(request);

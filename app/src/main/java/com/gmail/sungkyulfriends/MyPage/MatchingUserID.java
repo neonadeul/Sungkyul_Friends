@@ -25,8 +25,8 @@ public class MatchingUserID {
         return instance;
     }
 
-    public void makeRequest(String userID, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        String URL = "http://3.34.20.219/UpdateInfo/updateUserInfo.php"; // 실제 URL로 대체
+    public void profileRequest(String userID, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        String URL = "http://3.34.20.219/Register.php"; // 실제 URL로 대체
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, listener, errorListener) {
             // 필요한 메서드 오버라이드
         };
