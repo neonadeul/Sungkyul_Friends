@@ -48,6 +48,7 @@
             android:layout_weight="1"/>
 
         <EditText
+            android:id="@+id/et_name"
             android:layout_width="164dp"
             android:layout_height="50dp"
             android:layout_marginLeft="28dp"
@@ -73,12 +74,14 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rb_gender1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="남자"
                 android:layout_marginLeft="32dp"/>
 
             <RadioButton
+                android:id="@+id/rb_gender2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="여자"
@@ -100,7 +103,7 @@
             android:layout_marginTop="14dp"/>
 
         <Spinner
-            android:id="@+id/grade_spinner"
+            android:id="@+id/sp_year"
             android:layout_width="136dp"
             android:layout_height="50dp"
             android:entries="@array/grade"
@@ -126,18 +129,21 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rb_dept1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="전공 심화"
                 android:layout_marginLeft="32dp"/>
 
             <RadioButton
+                android:id="@+id/rb_dept2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="복수 전공"
                 android:layout_marginLeft="32dp"/>
 
             <RadioButton
+                android:id="@+id/rb_dept3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="부전공"
@@ -159,7 +165,7 @@
             android:layout_marginTop="14dp"/>
 
         <Spinner
-            android:id="@+id/major_spinner"
+            android:id="@+id/sp_dept"
             android:layout_width="170dp"
             android:layout_height="50dp"
             android:entries="@array/major"
