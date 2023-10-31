@@ -71,12 +71,13 @@
             android:gravity="center"
             android:id="@+id/major">
 
-
-            <Spinner
-                android:layout_width="110dp"
-                android:layout_height="50dp"
-                android:entries="@array/major_type"
-                android:gravity="right"/>
+            <TextView
+                android:id="@+id/main_dept_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주전공 학과"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
 
 
         </LinearLayout>
@@ -136,44 +137,13 @@
         android:background="#d9d9d9"
         app:layout_constraintTop_toBottomOf="@id/class_name"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="#F5F7EF"
-        app:layout_constraintTop_toBottomOf="@id/line2"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:id="@+id/why"
-        android:paddingLeft="60dp">
-
-        <Spinner
-            android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:entries="@array/friend_or_team"
-            android:gravity="left"/>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line3"
-        android:background="#d9d9d9"
-        app:layout_constraintTop_toBottomOf="@id/why"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/line4"
-        android:background="#d9d9d9"
-        app:layout_constraintTop_toBottomOf="@id/why"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/line4"
+        app:layout_constraintTop_toBottomOf="@id/line2"
         android:id="@+id/profile">
 
         <ImageView
