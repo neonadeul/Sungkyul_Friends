@@ -14,12 +14,14 @@ import android.widget.ToggleButton;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.gmail.sungkyulfriends.LoginRegister.login_page;
+import com.gmail.sungkyulfriends.MyPage.retouchRequest;
 import com.gmail.sungkyulfriends.R;
 
 import org.json.JSONArray;
@@ -27,8 +29,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class retouch_interest_choice extends AppCompatActivity {
@@ -106,12 +110,19 @@ public class retouch_interest_choice extends AppCompatActivity {
         Set<String> interests = preferences.getStringSet(login_page.userID, new HashSet<>());
         return new ArrayList<>(interests);
     }
-
+    private void setToggleButtonStates() {
+        for (ToggleButton toggleButton : toggleButtons) {
+            String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
+            toggleButton.setChecked(interestArray.contains(interest));
+        }
+    }
     private void loadUserInterests() {
+
         String userID = login_page.userID;
-        String serverUrl = "http://3.34.20.219/Interest.php?userID=" + userID;
+        String serverUrl = "http://3.34.20.219/Interest.php";
         List<String> interestList = getSelectedInterests();
-        String[] interestArray = interestList.toArray(new String[0]);
+        String[] interestArray = interestList.toArray(new String[interestList.size()]);
+
 
         GetDataRequest getDataRequest = new GetDataRequest(userID, interestArray,
                 new Response.Listener<String>() {
@@ -132,10 +143,8 @@ public class retouch_interest_choice extends AppCompatActivity {
         queue.add(getDataRequest);
     }
 
-    private void setToggleButtonStates() { for (ToggleButton toggleButton : toggleButtons) {
-        String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
-        toggleButton.setChecked(interestArray.contains(interest));}
-    }
+
+
     private void parseAndSetUserInterests(String response) {
         List<String> userInterests = new ArrayList<>();
 
@@ -197,15 +206,9 @@ public class retouch_interest_choice extends AppCompatActivity {
     private void sendRequestToServer(final List<String> interests) {
         String serverUrl = "http://3.34.20.219/UpdateInfo/updateInterest.php";
 
-        JSONArray jsonArray = new JSONArray();
-        for (String interest : interests) {
-            jsonArray.put(interest);
-        }
-
-        String interestsStr = jsonArray.toString();
-
         // Request를 보내기 전에 UserID 및 interestsArray 파라미터 설정
-        retouchRequest request = new retouchRequest(login_page.userID, new String[]{interestsStr},
+        retouchRequest request = new retouchRequest(login_page.userID, new String[]{},
+
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -217,7 +220,21 @@ public class retouch_interest_choice extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         handleError(error);
                     }
-                });
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("userID", login_page.userID);
+
+                // 선택된 관심사를 가져와서 파라미터로 설정
+                List<String> selectedInterests = getSelectedInterests();
+                for (int i = 0; i < selectedInterests.size(); i++) {
+                    params.put("interestArray[" + i + "]", selectedInterests.get(i));
+                }
+
+                return params;
+            }
+        };
 
         RequestQueue queue = Volley.newRequestQueue(retouch_interest_choice.this);
         queue.add(request);
