@@ -1,9 +1,8 @@
 package com.gmail.sungkyulfriends.MyPage;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,13 +25,17 @@ import com.gmail.sungkyulfriends.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class profile_retouch extends AppCompatActivity {
     private EditText et_name;
     private Spinner sp_year, sp_dept;
     private RadioButton rb_gender1, rb_gender2, rb_dept1, rb_dept2, rb_dept3;
-    String userID = login_page.userID;
+    private String userID = login_page.userID;
     private Button retouch_profile_button;
     private Button choice_interest_button;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +65,6 @@ public class profile_retouch extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateUserProfile();
-                Intent intent = new Intent(profile_retouch.this, mypage.class);
-                startActivity(intent);
             }
         });
 
@@ -74,107 +77,99 @@ public class profile_retouch extends AppCompatActivity {
             }
         });
 
-        // Get user data and populate UI elements
-        GetProfile();
+        requestQueue = Volley.newRequestQueue(this);
+        retrieveUserProfile();
+    }
+
+    private void retrieveUserProfile() {
+        GetProfile userProfile = new GetProfile(getApplicationContext());
+        userProfile.setOnProfileInfoListener(new GetProfile.OnProfileInfoListener() {
+            @Override
+            public void onProfileInfoReceived(String name, String sex, String year, String main_dept, String dept_t) {
+          et_name.setText(name);
+          sp_year.getSelectedItem();
+          sp_dept.getSelectedItem();
+          rb_dept1.isChecked();
+          rb_dept2.isChecked();
+          rb_dept3.isChecked();
+          rb_gender1.isChecked();
+          rb_gender2.isChecked();
+
+
+          }
+          @Override
+           public void onProfileInfoError(String errorMessage) {
+
+          }
+      });
+        userProfile.retrieveProfileInfo();
     }
 
     private void updateUserProfile() {
-        // 사용자 입력에서 정보 수집
-        String userName = et_name.getText().toString();
-        String userGrade = sp_year.getSelectedItem().toString();
-        String dept_t = sp_dept.getSelectedItem().toString();
-        String userMajor = getSelectedMajor();
+        // Gather the updated profile information
+        String name = et_name.getText().toString();
+        String year = sp_year.getSelectedItem().toString();
+        String dept_t = getSelectedMajor();
+        String sex = getSelectedSex();
+        String main_dept = sp_dept.getSelectedItem().toString();
+
         String updateUserUrl = "http://3.34.20.219/UpdateInfo/updateUserInfo.php";
 
-        // 프로필 업데이트 요청을 만들고 서버에 전송
-        profileRequest updateRequest = new profileRequest(
-                userID,
-                userName,
-                getSelectedGender(),
-                userGrade,
-                dept_t,
-                userMajor,
+        StringRequest updateRequest = new StringRequest(Request.Method.POST, updateUserUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            // 서버 응답 처리
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) {
-                                Toast.makeText(getApplicationContext(), "프로필 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "프로필 수정에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "응답 파싱 오류", Toast.LENGTH_SHORT).show();
-                        }
+                        handleUpdateResponse(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "네트워크 오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+                params.put("userID", userID);
+                params.put("userName", name);
+                params.put("userGrade", year);
+                params.put("dept_t", dept_t);
+                params.put("userMajor", sex);
+                params.put("main_dept", main_dept);
+
+                return params;
+            }
+        };
+
         requestQueue.add(updateRequest);
     }
 
-    private void GetProfile() {
-        String getProfileUrl = "http://3.34.20.219/Register.php";
-
-        // 사용자 정보를 가져와 UI 요소에 채워넣는 GET 요청
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, getProfileUrl,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            handleUserDataResponse(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "응답 파싱 오류", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "사용자 데이터를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+    private String getSelectedSex() {
+        if (rb_gender1.isChecked()) {
+            return "남자";
+        } else if (rb_gender2.isChecked()) {
+            return "여자";
+        }
+        return "";
     }
 
-    private void handleUserDataResponse(String response) throws JSONException {
-        // 받은 사용자 데이터로 UI 업데이트
-        JSONObject jsonObject = new JSONObject(response);
-        String userName = jsonObject.getString("userName");
-        String userGender = jsonObject.getString("userGender");
-        String userYear = jsonObject.getString("userYear");
-        String userDept = jsonObject.getString("userDept");
-        String userMajor = jsonObject.getString("userMajor");
-
-        et_name.setText(userName);
-
-        if (userMajor.equals("전공 심화")) {
-            rb_dept1.setChecked(true);
-        } else if (userMajor.equals("복수 전공")) {
-            rb_dept2.setChecked(true);
-        } else if (userMajor.equals("부전공")) {
-            rb_dept3.setChecked(true);
-        }
-
-        if (userGender.equals("남자")) {
-            rb_gender1.setChecked(true);
-        } else if (userGender.equals("여자")) {
-            rb_gender2.setChecked(true);
+    private void handleUpdateResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            boolean success = jsonObject.getBoolean("success");
+            if (success) {
+                Toast.makeText(getApplicationContext(), "Profile updated successfully.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Failed to update profile.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Error parsing response", Toast.LENGTH_SHORT).show();
         }
     }
+
     private String getSelectedMajor() {
         if (rb_dept1.isChecked()) {
             return "전공 심화";
@@ -183,10 +178,4 @@ public class profile_retouch extends AppCompatActivity {
         } else if (rb_dept3.isChecked()) {
             return "부전공";
         }
-        return "";
-    }
-
-    private String getSelectedGender() {
-        return rb_gender1.isChecked() ? "남자" : "여자";
-    }
-}
+        return "";}}

@@ -2,7 +2,6 @@ package com.gmail.sungkyulfriends.MyPage;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -10,9 +9,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.gmail.sungkyulfriends.LoginRegister.login_page;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GetProfile {
 
@@ -30,15 +30,15 @@ public class GetProfile {
     public GetProfile(Context context) {
         this.context = context;
         this.queue = Volley.newRequestQueue(context);
-        this.userID = login_page.userID; // Assuming login_page.userID contains the user ID.
-
+        this.userID = login_page.userID;
         retrieveProfileInfo();
     }
 
     public interface OnProfileInfoListener {
-        void onProfileInfoReceived(String userID, String name, String sex, String year, String main_dept, String dept_t);
+        void onProfileInfoReceived(String name, String sex, String year, String main_dept, String dept_t);
         void onProfileInfoError(String errorMessage);
     }
+
 
     public void setOnProfileInfoListener(OnProfileInfoListener listener) {
         this.profileListener = listener;
@@ -46,44 +46,38 @@ public class GetProfile {
 
     private void informProfileListener() {
         if (profileListener != null) {
-            profileListener.onProfileInfoReceived(userID, name, sex, year, main_dept, dept_t);
+            profileListener.onProfileInfoReceived(name, sex, year, main_dept, dept_t);
         }
     }
 
-    private void retrieveProfileInfo() {
-        String url = "http://3.34.20.219/Register.php"; // 사용자 프로필 정보를 가져오는 URL
+    public void retrieveProfileInfo() {
+        String url = "http://3.34.20.219/UpdateInfo/updateUserInfo.php";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            // JSON 응답 처리
-                            JSONObject jsonObject = new JSONObject(response);
-                            userID = jsonObject.getString("userID");
-                            name = jsonObject.getString("Name");
-                            sex = jsonObject.getString("sex");
-                            year = jsonObject.getString("year");
-                            main_dept = jsonObject.getString("main_dept");
-                            dept_t = jsonObject.getString("dept_t");
-
-                            // Log를 통해 서버로부터 받은 데이터 확인
-                            Log.d("Server userID", userID);
-                            Log.d("Server Name", name);
-                            Log.d("Server sex", sex);
-                            Log.d("Server year", year);
-                            Log.d("Server main_dept", main_dept);
-                            Log.d("Server dept_t", dept_t);
-
-                            // 콜백 리스너를 통해 데이터 전달
-                            informProfileListener();
-                        } catch (JSONException e) {
-                            if (profileListener != null) {
-                                profileListener.onProfileInfoError("JSON 파싱 오류");
+                        if (response != null && !response.isEmpty()) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                name = jsonObject.getString("Name");
+                                sex = jsonObject.getString("Sex");
+                                year = jsonObject.getString("Year");
+                                main_dept = jsonObject.getString("MainDept");
+                                dept_t = jsonObject.getString("DeptT");
+                                informProfileListener();
+                            } catch (JSONException e) {
+                                if (profileListener != null) {
+                                    profileListener.onProfileInfoError("JSON Parsing Error");
+                                }
+                                e.printStackTrace();}
+                            }else{
+                                if (profileListener != null) {
+                                    profileListener.onProfileInfoError("Empty or null response");
+                                }
                             }
-                            e.printStackTrace();
                         }
-                    }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -93,34 +87,45 @@ public class GetProfile {
                                 profileListener.onProfileInfoError(error.getMessage());
                                 Log.e("Volley Error", error.getMessage());
                             } else {
-                                profileListener.onProfileInfoError("알 수 없는 오류가 발생했습니다.");
-                                Log.e("Volley Error", "알 수 없는 오류가 발생했습니다.");
+                                profileListener.onProfileInfoError("An unknown error occurred.");
+                                Log.e("Volley Error", "An unknown error occurred.");
                             }
                         }
                     }
-                });
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("userID", userID);
+                params.put("Name", name);
+                params.put("sex", sex);
+                params.put("year", year);
+                params.put("main_dept", main_dept);
+                params.put("dept_t", dept_t);
+                return params;
+            }
+        };
 
         queue.add(stringRequest);
     }
 
-    // Getter methods for user information
-    public String getName() {
+    public String postName() {
         return name;
     }
 
-    public String getSex() {
+    public String postSex() {
         return sex;
     }
 
-    public String getMainDept() {
+    public String postMainDept() {
         return main_dept;
     }
 
-    public String getStudentID() {
+    public String postStudentID() {
         return year;
     }
 
-    public String getDeptT() {
+    public String postDeptT() {
         return dept_t;
     }
 }
