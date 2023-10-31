@@ -9,30 +9,32 @@ import java.util.Map;
 
 public class GetDataRequest extends StringRequest {
 
-    private static final String URL_GET_DATA = "http://3.34.20.219/Interest.php";
+    private static final String URL_GET_DATA = "http://3.34.20.219/Interest.php"; // Change the URL if necessary
+    private Map<String, String> params;
 
     public GetDataRequest(String userID, String[] interestArray, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        super(Method.GET, buildUrl(userID, interestArray), listener, errorListener);
-    }
+        super(Method.POST, URL_GET_DATA, listener, errorListener);
+        params = new HashMap<>();
+        params.put("userID", userID);
 
-    private static String buildUrl(String userID, String[] interestArray) {
-        String interestArrayString = joinArray(interestArray, ",");
-        return URL_GET_DATA + "?userID=" + userID + "&interestArray=" + interestArrayString;
-    }
-
-    private static String joinArray(String[] array, String delimiter) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            if (i > 0) {
-                result.append(delimiter);
-            }
-            result.append(array[i]);
-        }
-        return result.toString();
+        // Convert the array to a comma-separated string
+        String interests = arrayToString(interestArray);
+        params.put("interestArray", interests);
     }
 
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
-        return super.getParams();
+        return params;
+    }
+
+    private String arrayToString(String[] array) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            result.append(array[i]);
+            if (i < array.length - 1) {
+                result.append(",");
+            }
+        }
+        return result.toString();
     }
 }
