@@ -14,6 +14,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.gmail.sungkyulfriends.LoginRegister.login_page;
 import com.gmail.sungkyulfriends.MainActivity;
 import com.gmail.sungkyulfriends.MyPage.other_person_profile;
 import com.gmail.sungkyulfriends.R;
@@ -164,7 +169,33 @@ public class class_matched_firendFirst extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 matching_button.dismiss();
-                showDialog02();
+
+                // 매칭취소 "예" 버튼 클릭시 매칭취소 API
+                Response.Listener<String> response_listener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // 응답을 받았을 때 실행할 코드
+                        // response 변수에 서버에서 받은 응답이 들어있습니다.
+                        Log.d("매칭취소응답: ",  response);
+
+                        showDialog02();
+                    }
+                };
+
+                // userID값 가져오기
+                String userID = login_page.userID;
+
+                // 서버로 Volley를 이용해서 요청을 함
+                MatchedCancelRequest matchedCancelRequest = new MatchedCancelRequest(userID, response_listener, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("error", error.getMessage());
+                    }
+                });
+
+                RequestQueue queue = Volley.newRequestQueue(class_matched_firendFirst.this);
+                queue.add(matchedCancelRequest);
+
             }
         });
     }
@@ -185,6 +216,8 @@ public class class_matched_firendFirst extends AppCompatActivity {
             public void onClick(View v) {
                 finish_button.dismiss();
                 Intent intent = new Intent(class_matched_firendFirst.this, review_write.class);
+                intent.putExtra("receiver",Chat_PartnerID);
+                intent.putExtra("name",partner_name);
                 startActivity(intent);
             }
         });

@@ -48,25 +48,20 @@ public class review_write extends AppCompatActivity {
         // login_page에서 userID값 받아오기
         String sender = login_page.userID;
 
+        // class_matched_firendFirst에서 receiver가져오기
+        Intent intent = getIntent();
+        String receiver = intent.getStringExtra("receiver");
+
+        // class_matched_firendFirst에서 상대방이름 가져오기
+        String name = intent.getStringExtra("name");
+
         // 상대방 이름으로 보여주기
         GetMatchingPartnerID getMatchingPartnerID = new GetMatchingPartnerID(this.getApplicationContext());
         TextView receiver_nameTextView = findViewById(R.id.receiver_name);
 
-        getMatchingPartnerID.setOnPartnerInfoReceivedListener(new GetMatchingPartnerID.OnPartnerInfoReceivedListener() {
-            @Override
-            public void onPartnerInfoReceived(String partnerID, String name, String sex, String mainDept, String studentID, String deptT) {
-                // 응답을 받아서 처리하는 코드를 여기에 작성합니다.
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        receiver_nameTextView.setText(name + "님의 후기 작성");
-                        Log.d("상대방이름: ", name);
+        receiver_nameTextView.setText(name + "님의 후기 작성");
+        Log.d("상대방이름: ", name);
 
-                        receiver = partnerID;
-                    }
-                });
-            }
-        });
 
         ImageView back_arrow = findViewById(R.id.back_arrow);
         back_arrow.setOnClickListener(new View.OnClickListener() {
@@ -183,14 +178,14 @@ public class review_write extends AppCompatActivity {
                         // 응답을 받았을 때 실행할 코드
                         // response 변수에 서버에서 받은 응답이 들어있습니다.
 
-                        Log.d("응답", "response: " + response);
+                        Log.d("리뷰썼을때 서버 응답: ", response);
                         // 후기작성 완료 다이얼로그
 
                         success_review_dialog = new Dialog(review_write.this);
                         success_review_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         success_review_dialog.setContentView(R.layout.activity_success_review_dialog);
 
-//
+
                         show_success_review_dialog();
 
 
@@ -211,10 +206,6 @@ public class review_write extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 
     // 다이얼로그
@@ -224,7 +215,6 @@ public class review_write extends AppCompatActivity {
                 .setPositiveButton("확인", null);
         AlertDialog dialog = builder.create();
         dialog.show();
-
     }
 
     // 후기 작성 완료 다이얼로그
