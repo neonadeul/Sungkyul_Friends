@@ -110,7 +110,7 @@ public class retouch_interest_choice extends AppCompatActivity {
     private void loadUserInterests() {
         String userID = login_page.userID;
         String serverUrl = "http://3.34.20.219/Interest.php?userID=" + userID;
-        List<String> interestList = getSelectedInterests();  // Assuming this returns the List<String>
+        List<String> interestList = getSelectedInterests();
         String[] interestArray = interestList.toArray(new String[0]);
 
         GetDataRequest getDataRequest = new GetDataRequest(userID, interestArray,
@@ -118,6 +118,7 @@ public class retouch_interest_choice extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         parseAndSetUserInterests(response);
+                        setToggleButtonStates(); // 토글 버튼 상태 설정
                     }
                 },
                 new Response.ErrorListener() {
@@ -131,6 +132,10 @@ public class retouch_interest_choice extends AppCompatActivity {
         queue.add(getDataRequest);
     }
 
+    private void setToggleButtonStates() { for (ToggleButton toggleButton : toggleButtons) {
+        String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
+        toggleButton.setChecked(interestArray.contains(interest));}
+    }
     private void parseAndSetUserInterests(String response) {
         List<String> userInterests = new ArrayList<>();
 
@@ -149,9 +154,12 @@ public class retouch_interest_choice extends AppCompatActivity {
 
         for (ToggleButton toggleButton : toggleButtons) {
             String interest = toggleButton.getText().toString().replace(" ", "").replace("#", "");
-            toggleButton.setChecked(userInterests.contains(interest));
+            boolean containsInterest = userInterests.contains(interest);
+            Log.d("Toggle Button", "Interest: " + interest + ", Contains: " + containsInterest);
+            toggleButton.setChecked(containsInterest);
         }
     }
+
 
     private void showSelectionLimitDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(retouch_interest_choice.this);
