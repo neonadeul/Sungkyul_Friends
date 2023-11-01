@@ -1,57 +1,62 @@
 package com.gmail.sungkyulfriends.MyPage;
 
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.android.volley.AuthFailureError;
+import android.content.Context;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-import java.util.HashMap;
-import java.util.Map;
-public class GetDataRequest extends StringRequest {
+import java.util.Arrays;
 
-    private static final String URL = "http://3.34.20.219/UpdateInfo/updateInterest.php";
-    private Map<String, String> params;
+public class GetDataRequest {
 
-    public GetDataRequest(String userID, String[] interestArray, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        super(Method.POST, URL, listener, errorListener);
+    private OnDataReceivedListener listener;
+    private RequestQueue queue;
+    private String userID;
+    private String[] interestArray;
 
-        if (TextUtils.isEmpty(userID)) {
-            throw new IllegalArgumentException("userID cannot be null or empty");
-        }
-
-        // Request Parameters 설정
-        params = new HashMap<>();
-        params.put("userID", userID);
-
-        if (interestArray != null) {
-            // interestArray를 직접 params에 추가
-            for (int i = 0; i < interestArray.length; i++) {
-                params.put("interestArray[" + i + "]", interestArray[i]);
-            }
-        }
-
-        Map<Object, Object> map = new HashMap<>();
-        map.put("userID", userID);
-        map.put("interestArray", interestArray);
-        Log.v("태그", "매핑리터치 완료");
+    public GetDataRequest(String userID, String[] interestArray, OnDataReceivedListener listener) {
+        this.userID = userID;
+        this.interestArray = interestArray;
+        this.listener = listener;
     }
 
-    @Override
-    protected Map<String, String> getParams() throws AuthFailureError {
-        return params;
+    public void execute(Context context) {
+        queue = Volley.newRequestQueue(context);
+
+        String url = "http://3.34.20.219/Interest.php";
+
+        // 관심사 배열에 있는 각 항목을 URL에 추가
+        for (String interest : interestArray) {
+            url += "&interest=" + interest;
+        }
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onDataReceived(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handleError(error);
+                    }
+                });
+
+        queue.add(stringRequest); // 요청을 큐에 추가
     }
 
+    private void handleError(VolleyError error) {
+        // 오류 처리 로직을 여기에 구현
+    }
 
-    private String arrayToString(String[] array) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            result.append(array[i]);
-            if (i < array.length - 1) {
-                result.append(",");
-            }
-        }
-        return result.toString();
+    public interface OnDataReceivedListener {
+        void onDataReceived(String data);
     }
 }

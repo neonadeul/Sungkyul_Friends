@@ -119,28 +119,18 @@ public class retouch_interest_choice extends AppCompatActivity {
     private void loadUserInterests() {
 
         String userID = login_page.userID;
-        String serverUrl = "http://3.34.20.219/Interest.php";
         List<String> interestList = getSelectedInterests();
         String[] interestArray = interestList.toArray(new String[interestList.size()]);
 
+        GetDataRequest getDataRequest = new GetDataRequest(userID, interestArray, new GetDataRequest.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived(String response) {
+                parseAndSetUserInterests(response);
+                setToggleButtonStates(); // 토글 버튼 상태 설정
+            }
+        });
 
-        GetDataRequest getDataRequest = new GetDataRequest(userID, interestArray,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        parseAndSetUserInterests(response);
-                        setToggleButtonStates(); // 토글 버튼 상태 설정
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        handleError(error);
-                    }
-                });
-
-        RequestQueue queue = Volley.newRequestQueue(retouch_interest_choice.this);
-        queue.add(getDataRequest);
+        getDataRequest.execute(this); // 'this'는 현재 Context(여기서는 retouch_interest_choice)입니다.
     }
 
 
