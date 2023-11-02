@@ -52,8 +52,13 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         // name값 class_matched_firendFirst에서 받아오기
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+//        Intent intent = getIntent();
+//        String name = intent.getStringExtra("name");
+        // GetMatchingPartnerID에서 이름 받아오기
+//        String name = GetMatchingPartnerID.name;
+        GetMatchingPartnerID matchingPartner = new GetMatchingPartnerID(this);
+        String name = matchingPartner.getName();
+
 
         // 상대방 이름 보여주기
         TextView partnerNameTextView = findViewById(R.id.partner_name);
@@ -64,7 +69,11 @@ public class ChatActivity extends AppCompatActivity {
         EditText_chat = findViewById(R.id.EditText_chat);
 
         // partnerID값 class_matched_firendFirst에서 받아오기
-        String Chat_PartnerID = intent.getStringExtra("partnerID");
+//        String Chat_PartnerID = intent.getStringExtra("partnerID");
+        // GetMatchingPartnerID에서 partnerID값 받아오기
+//        String Chat_PartnerID = GetMatchingPartnerID.partnerID;
+        String Chat_PartnerID = matchingPartner.getPartnerID();
+
 
         //채팅 키가 문자 순서대로 생성되어 중복없이 고유한 키 값을 만들도록 조건문 만듦.
         if (Chat_PartnerID != null) {

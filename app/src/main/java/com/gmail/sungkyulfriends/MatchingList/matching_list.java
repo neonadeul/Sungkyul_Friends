@@ -22,6 +22,7 @@ import com.gmail.sungkyulfriends.LoginRegister.login_page;
 import com.gmail.sungkyulfriends.MainActivity;
 import com.gmail.sungkyulfriends.R;
 
+import com.gmail.sungkyulfriends.SeniorAndJunior.ChatActivity;
 import com.gmail.sungkyulfriends.SeniorAndJunior.GetMatchingState;
 import com.gmail.sungkyulfriends.SeniorAndJunior.MatchingCancel;
 import com.gmail.sungkyulfriends.SeniorAndJunior.MatchingList_json;
@@ -36,7 +37,6 @@ import org.json.JSONObject;
 public class matching_list extends AppCompatActivity {
 
     private ImageButton main_button;
-    private ImageButton alarm_page_button;
     private ImageButton mypage_button;
 
     // 매칭확인, 취소버튼
@@ -47,6 +47,7 @@ public class matching_list extends AppCompatActivity {
     private Dialog no_matching_possible_dialog;
     private Dialog matching_list_cancel_dialog;
     private Dialog matching_success_dialog;
+    Dialog no_one_matched_dialog;
 
     // 매칭상태
     private GetMatchingState getMatchingState;
@@ -83,14 +84,6 @@ public class matching_list extends AppCompatActivity {
             }
         });
 
-        alarm_page_button = findViewById(R.id.alarm_page_button);
-        alarm_page_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(matching_list.this, matching_alarm_list.class);
-                startActivity(intent);
-            }
-        });
 
         mypage_button = findViewById(R.id.mypage_button);
         mypage_button.setOnClickListener(new View.OnClickListener() {

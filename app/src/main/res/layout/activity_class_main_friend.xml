@@ -96,6 +96,7 @@
             android:id="@+id/grade">
 
             <Spinner
+                android:id="@+id/academic_year_spinner"
                 android:layout_width="110dp"
                 android:layout_height="50dp"
                 android:gravity="right"
@@ -123,6 +124,7 @@
         android:paddingLeft="60dp">
 
         <Spinner
+            android:id="@+id/department_spinner"
             android:layout_width="190dp"
             android:layout_height="50dp"
             android:gravity="left"
@@ -213,16 +215,19 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="남"/>
 
                 <RadioButton
+                    android:id="@+id/woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="여"/>
 
                 <RadioButton
+                    android:id="@+id/doesntMatter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="상관 없음"/>
@@ -282,10 +287,11 @@
             android:id="@+id/grade_right">
 
             <Spinner
+                android:id="@+id/sp_year"
                 android:layout_width="110dp"
                 android:layout_height="50dp"
                 android:entries="@array/other_person_grade"
-                android:gravity="right"/>
+                android:gravity="right" />
 
         </LinearLayout>
 

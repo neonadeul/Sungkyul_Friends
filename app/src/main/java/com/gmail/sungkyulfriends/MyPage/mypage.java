@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gmail.sungkyulfriends.Calender.class_calender;
+import com.gmail.sungkyulfriends.LoginRegister.login_page;
 import com.gmail.sungkyulfriends.MainActivity;
 import com.gmail.sungkyulfriends.R;
 import com.gmail.sungkyulfriends.SchoolCheck.school_accreditation_choice;
@@ -20,11 +21,22 @@ public class mypage extends AppCompatActivity implements GetMyCalScore.OnTotalSc
 
     private Button more_review_button;
     private Button retouch_profile_button;
+    private TextView log_out_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
+
+        // 로그아웃 버튼
+        log_out_btn= findViewById(R.id.log_out_btn);
+        log_out_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mypage.this, login_page.class);
+                startActivity(intent);
+            }
+        });
 
         // 내 평균후기학점
 //        GetMyCalScore getMyCalScore = new GetMyCalScore(mypage.this, this); // 리스너 등록

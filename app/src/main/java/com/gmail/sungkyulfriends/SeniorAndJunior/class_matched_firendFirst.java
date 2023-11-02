@@ -30,7 +30,6 @@ import com.gmail.sungkyulfriends.MyPage.review_write;
 public class class_matched_firendFirst extends AppCompatActivity {
     Dialog matching_button;
     Dialog finish_button;
-    private ImageButton alarm_page_button;
     private ImageButton matching_list_button;
     private ImageButton mypage_button;
     private ImageButton main_page_button;
@@ -75,17 +74,6 @@ public class class_matched_firendFirst extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-        alarm_page_button = findViewById(R.id.alarm_page_button);
-        alarm_page_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(class_matched_firendFirst.this, matching_alarm_list.class);
-                startActivity(intent);
-            }
-        });
-
 
         main_page_button = findViewById(R.id.main_page_button);
         main_page_button.setOnClickListener(new View.OnClickListener() {
