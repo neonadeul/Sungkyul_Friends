@@ -56,6 +56,13 @@ public class profile_retouch extends AppCompatActivity {
 
         retouch_profile_button = findViewById(R.id.retouch_profile_button);
         choice_interest_button = findViewById(R.id.choice_interest_button);
+        choice_interest_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(profile_retouch.this, retouch_interest_choice.class);
+                startActivity(intent);
+            }
+        });
         requestQueue = Volley.newRequestQueue(this);
 
         retrieveUserProfile();
