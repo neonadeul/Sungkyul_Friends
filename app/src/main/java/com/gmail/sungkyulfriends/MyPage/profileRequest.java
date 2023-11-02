@@ -18,18 +18,20 @@ public class profileRequest extends StringRequest {
 
         params = new HashMap<>();
         params.put("userID", userID);
-        params.put("Name", name);
+        params.put("name", name);
         params.put("sex", sex);
         params.put("year", year);
-        params.put("main_dept", main_dept);
         params.put("dept_t", dept_t);
+        params.put("main_dept", main_dept);
         Log.v("TAG", "Mapped 6");
     }
 
+
     @Override
-    protected Map<String, String> getParams() {
+    protected Map<String, String> getParams() throws AuthFailureError {
         return params;
     }
+
 
     // Server response handling
     @Override
