@@ -1,40 +1,62 @@
 package com.gmail.sungkyulfriends.MyPage;
 
-import com.android.volley.AuthFailureError;
+import android.content.Context;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
-public class GetDataRequest extends StringRequest {
+public class GetDataRequest {
 
-    private static final String URL_GET_DATA = "http://3.34.20.219/Interest.php"; // Change the URL if necessary
-    private Map<String, String> params;
+    private OnDataReceivedListener listener;
+    private RequestQueue queue;
+    private String userID;
+    private String[] interestArray;
 
-    public GetDataRequest(String userID, String[] interestArray, Response.Listener<String> listener, Response.ErrorListener errorListener) {
-        super(Method.POST, URL_GET_DATA, listener, errorListener);
-        params = new HashMap<>();
-        params.put("userID", userID);
-
-        // Convert the array to a comma-separated string
-        String interests = arrayToString(interestArray);
-        params.put("interestArray", interests);
+    public GetDataRequest(String userID, String[] interestArray, OnDataReceivedListener listener) {
+        this.userID = userID;
+        this.interestArray = interestArray;
+        this.listener = listener;
     }
 
-    @Override
-    protected Map<String, String> getParams() throws AuthFailureError {
-        return params;
-    }
+    public void execute(Context context) {
+        queue = Volley.newRequestQueue(context);
 
-    private String arrayToString(String[] array) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            result.append(array[i]);
-            if (i < array.length - 1) {
-                result.append(",");
-            }
+        String url = "http://3.34.20.219/Interest.php";
+
+        // 관심사 배열에 있는 각 항목을 URL에 추가
+        for (String interest : interestArray) {
+            url += "&interest=" + interest;
         }
-        return result.toString();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onDataReceived(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handleError(error);
+                    }
+                });
+
+        queue.add(stringRequest); // 요청을 큐에 추가
+    }
+
+    private void handleError(VolleyError error) {
+        // 오류 처리 로직을 여기에 구현
+    }
+
+    public interface OnDataReceivedListener {
+        void onDataReceived(String data);
     }
 }
