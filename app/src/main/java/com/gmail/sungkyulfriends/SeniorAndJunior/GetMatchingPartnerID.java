@@ -19,7 +19,7 @@ public class GetMatchingPartnerID {
     RequestQueue queue; // RequestQueue 변수 추가
 
     public static String partnerID;
-    private String name;
+    public static String name;
     private String sex;
     private String main_dept;
     private String studentID;

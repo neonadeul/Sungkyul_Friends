@@ -130,10 +130,10 @@
             android:layout_weight="1"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/alarm_page_button"
-            android:layout_width="75dp"
-            android:layout_height="62dp"
-            android:background="@drawable/alarm_page_icon"
+            android:id="@+id/chat_room_button"
+            android:layout_width="48dp"
+            android:layout_height="58dp"
+            android:background="@drawable/chat_icon"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Space

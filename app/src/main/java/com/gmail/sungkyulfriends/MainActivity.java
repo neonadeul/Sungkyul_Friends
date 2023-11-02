@@ -2,23 +2,25 @@ package com.gmail.sungkyulfriends;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.gmail.sungkyulfriends.MatchingAlarm.alarm_list_new;
 import com.gmail.sungkyulfriends.MatchingList.matching_list;
 import com.gmail.sungkyulfriends.MyPage.mypage;
 import com.gmail.sungkyulfriends.SameClass.class_main_friend;
+import com.gmail.sungkyulfriends.SeniorAndJunior.ChatActivity;
 import com.gmail.sungkyulfriends.SeniorAndJunior.GetMatchingState;
 import com.gmail.sungkyulfriends.SeniorAndJunior.class_main_friendMatching;
 import com.gmail.sungkyulfriends.SeniorAndJunior.class_matched_firendFirst;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton class_matching_button;
-    private ImageButton alarm_page_button;
     private ImageButton matching_list_button;
     private ImageButton mypage_button;
     private ImageButton main_page_button;
@@ -44,31 +46,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        class_matching_button = findViewById(R.id.class_matching_button);
-        class_matching_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, class_main_friend.class);
-                startActivity(intent); //엑티비티 이동
-            }
-        });
-        senior_matching_button = findViewById(R.id.senior_matching_button);
-//        senior_matching_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, class_main_friendMatching.class);
-//                startActivity(intent); //엑티비티 이동
-//            }
-//        });
-        alarm_page_button = findViewById(R.id.alarm_page_button);
-        alarm_page_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, alarm_list_new.class);
-                startActivity(intent);
-            }
-        });
 
+        // 메인화면 버튼
         main_page_button = findViewById(R.id.main_page_button);
         main_page_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 짝선배 짝후배 버튼 눌렀을 때
+        senior_matching_button = findViewById(R.id.senior_matching_button);
         senior_matching_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,4 +91,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
