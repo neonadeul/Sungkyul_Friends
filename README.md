@@ -73,7 +73,7 @@
 <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/279e01eb-3247-4935-82d3-156fcdc586dd" width="180" height="290"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/ba84dd23-74cf-40c6-9399-8e1be6249ce6" width="180" height="290"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/53e56e23-c2d3-4aae-826f-ce56fdb12584" width="180" height="290">
 
 - `상대방과의 화면`
-  - 상대방 프로필을 누르면 상대방 프로필 화면으로 전환
+  - 상대방 프로필을 누르면 상대방 프로필 화면으로 이동
   - 말풍선 아이콘을 누르면 상대방과의 채팅방으로 이동
   - 매칭 취소 버튼을 눌러 매칭 취소 가능
 - `상대방 프로필`
