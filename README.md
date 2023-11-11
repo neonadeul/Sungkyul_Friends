@@ -45,7 +45,7 @@
 
 
 #### ⭐짝 선배 - 짝 후배 매칭 과정
-<img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/ea0ca8bb-5201-4010-a39f-8a0d510de1bc" width="140" height="250"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/991c99cc-ae9f-4ddd-8140-23709eb50c80" width="140" height="250"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/3c01d1a4-2efb-440c-b78e-baf7450433e7" width="140" height="250"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/ab566c26-c615-4e23-84fa-2638e20a83f5" width="140" height="250"><img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/50465eaf-7594-45f8-8b8a-50e178eff63e" width="140" height="250"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/e63e95cc-62ee-45b6-999f-692b3da8df99" width="140" height="250">
+<img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/ea0ca8bb-5201-4010-a39f-8a0d510de1bc" width="180" height="290"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/991c99cc-ae9f-4ddd-8140-23709eb50c80" width="180" height="290"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/3c01d1a4-2efb-440c-b78e-baf7450433e7" width="180" height="290"> <br> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/ab566c26-c615-4e23-84fa-2638e20a83f5" width="180" height="290"><img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/50465eaf-7594-45f8-8b8a-50e178eff63e" width="180" height="290"> <img src="https://github.com/neonadeul/Sungkyul_Friends/assets/119486666/e63e95cc-62ee-45b6-999f-692b3da8df99" width="180" height="290">
 
 - `메인 화면`
   - 중앙에 매칭 하러가기 버튼
